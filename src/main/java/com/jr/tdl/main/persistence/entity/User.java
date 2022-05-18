@@ -17,40 +17,100 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "customer")
-@Data
+//@Getter
+//@Setter
 @NoArgsConstructor
 public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	
-	@OneToMany(mappedBy="customer")
+
+	@OneToMany(mappedBy = "customer")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-//	@JoinColumn(name="Card_id", nullable=false)    
-	private List<TdCard> TdCards;  
-	
+	private List<TdCard> TdCards;
+
 	@Size(min = 2, max = 12)
-	@Column(name = "user_name",unique = true, nullable = false)
-	String username;
-	
+	@Column(unique = true, nullable = false)
+	private String userName;
+
 	@Size(min = 6, max = 12)
-	@Column(name = "pass_word",nullable = false)
-	String password;
-	
-	@Column(name = "first_Name",nullable = false)
-	String firstName;
-	
-	@Column(name="second_Name",nullable = false)
-	String secondName;
+	@Column(nullable = false)
+	private String password;
+
+	@Column(nullable = false)
+	private String firstName;
+
+	@Column(nullable = false)
+	private String secondName;
+
+	@Column(name = "email", nullable = false)
+	String email;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<TdCard> getTdCards() {
+		return TdCards;
+	}
+
+	public void setTdCards(List<TdCard> tdCards) {
+		TdCards = tdCards;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSecondName() {
+		return secondName;
+	}
+
+	public void setSecondName(String secondName) {
+		this.secondName = secondName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	
 
-	@Column(name="email",nullable = false)
-//	@Pattern("^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$")
-	String email;
 	
+  
 }

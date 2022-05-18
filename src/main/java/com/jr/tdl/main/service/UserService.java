@@ -8,6 +8,7 @@ import org.springframework.data.util.Optionals;
 //import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.jr.tdl.main.exception.UserNotFoundException;
 import com.jr.tdl.main.persistence.entity.User;
 import com.jr.tdl.main.persistence.repository.UserRepository;
 
@@ -37,7 +38,7 @@ public class UserService {
 // Update User
 	public User updateUser(Long id, User user) {
 		
-		Optional<User> isUserPresent = Optional.of(this.userRepo.findById(id).orElseThrow());
+		Optional<User> isUserPresent = Optional.of(this.userRepo.findById(id).orElseThrow(UserNotFoundException::new));
 		User userPresent = isUserPresent.get();
 		userPresent.setEmail(user.getEmail());
 		userPresent.setFirstName(user.getFirstName());
@@ -54,7 +55,7 @@ public class UserService {
 //	
 //	Delete User
 	public boolean deleteUser(Long id) {
-		this.userRepo.findById(id);
+		this.userRepo.findById(id).orElseThrow(UserNotFoundException::new);
 		this.userRepo.deleteById(id);
 		return this.userRepo.existsById(id);
 		

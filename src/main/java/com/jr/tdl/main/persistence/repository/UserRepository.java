@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.jr.tdl.main.persistence.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Float>{
+public interface UserRepository extends JpaRepository<User, Long>{
 	
 
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jr.tdl.main.persistence.entity.User;
+import com.jr.tdl.main.rest.dto.UserDto;
 import com.jr.tdl.main.service.UserService;
 
 @RestController
@@ -26,19 +27,19 @@ public class UserController {
 	}
 	
 	@GetMapping("/getAllUser")
-	public ResponseEntity<List<User>> getAllUsers() {
-		return new ResponseEntity<List<User>>(this.userService.getUser(), HttpStatus.OK);
+	public ResponseEntity<List<UserDto>> getAllUsers() {
+		return new ResponseEntity<List<UserDto>>(this.userService.getUser(), HttpStatus.OK);
 	}
 	
 	@PostMapping("/createUser")
-	public ResponseEntity<User> createUser(@RequestBody User user) {
-		return new ResponseEntity<User>(this.userService.createUser(user), HttpStatus.CREATED);
+	public ResponseEntity<UserDto> createUser(@RequestBody User user) {
+		return new ResponseEntity<UserDto>(this.userService.createUser(user), HttpStatus.CREATED);
 		
 	}
 	
 	@PutMapping("/updateUser/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
-		return new ResponseEntity<User>(this.userService.updateUser(id,user), HttpStatus.OK);
+	public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody User user){
+		return new ResponseEntity<UserDto>(this.userService.updateUser(id,user), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/deleteUser/{id}")

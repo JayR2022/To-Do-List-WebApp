@@ -65,6 +65,12 @@
 	        <artifactId>modelmapper</artifactId>
 	        <version>2.3.8</version>
     	</dependency>
+    	<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+		<dependency>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-ui</artifactId>
+		    <version>1.6.8</version>
+		</dependency>
 	</dependencies>
 
 	<build>

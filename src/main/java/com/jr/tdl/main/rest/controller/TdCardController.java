@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.jr.tdl.main.persistence.entity.TdCard;
+import com.jr.tdl.main.rest.dto.TdCardDto;
 import com.jr.tdl.main.service.TdCardService;
 
 @Controller
@@ -26,19 +27,19 @@ public class TdCardController {
 	}
 	
 	@GetMapping("/card/getAllCards")
-	public ResponseEntity<List<TdCard>> getAllCards() {
-		return new ResponseEntity<List<TdCard>>(this.cardService.getCards(), HttpStatus.OK);
+	public ResponseEntity<List<TdCardDto>> getAllCards() {
+		return new ResponseEntity<List<TdCardDto>>(this.cardService.getCards(), HttpStatus.OK);
 	}
 	
 	@PostMapping("/card/createCard")
-	public ResponseEntity<TdCard> createCard(@RequestBody TdCard card) {
-		return new ResponseEntity<TdCard>(this.cardService.createCard(card), HttpStatus.CREATED);
+	public ResponseEntity<TdCardDto> createCard(@RequestBody TdCard card) {
+		return new ResponseEntity<TdCardDto>(this.cardService.createCard(card), HttpStatus.CREATED);
 		
 	}
 	
 	@PutMapping("/card/updateCard/{id}")
-	public ResponseEntity<TdCard> updateCard(@PathVariable Long id, @RequestBody TdCard card){
-		return new ResponseEntity<TdCard>(this.cardService.updateCard(id,card), HttpStatus.OK);
+	public ResponseEntity<TdCardDto> updateCard(@PathVariable Long id, @RequestBody TdCard card){
+		return new ResponseEntity<TdCardDto>(this.cardService.updateCard(id,card), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/card/deleteCard/{id}")

@@ -2,37 +2,50 @@ package com.jr.tdl.main.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.jr.tdl.main.exception.cardNotFoundException;
 import com.jr.tdl.main.persistence.entity.TdCard;
 import com.jr.tdl.main.persistence.repository.TdCardRepository;
+import com.jr.tdl.main.rest.dto.TdCardDto;
 
 @Service
 public class TdCardService {
 	
 	private TdCardRepository cardRepo;
+	private ModelMapper modelMapper;
 	
 	
-	public TdCardService(TdCardRepository cardRepo) {
+	public TdCardService(TdCardRepository cardRepo, ModelMapper modelMapper) {
 		super();
-		this.cardRepo = cardRepo;	
+		this.cardRepo = cardRepo;
+		this.modelMapper = modelMapper;
+	}
+	
+	
+	private TdCardDto mapCardDto(TdCard card) {
+		return this.modelMapper.map(card, TdCardDto.class);
 	}
 	
 	
 //	Create User
-	public TdCard createCard(TdCard card) {
-		return this.cardRepo.save(card);
+	public TdCardDto createCard(TdCard card) {
+		return this.mapCardDto(this.cardRepo.save(card));
 	}
 	
 //	Read User
-	public List<TdCard> getCards(){
-		return this.cardRepo.findAll();
+	public List<TdCardDto> getCards(){
+		return this.cardRepo.findAll()
+							.stream()
+							.map(cardItem -> this.mapCardDto(cardItem))
+							.collect(Collectors.toList());
 	}
 	
 // Update User
-	public TdCard updateCard(Long id, TdCard card) {
+	public TdCardDto updateCard(Long id, TdCard card) {
 		
 		Optional<TdCard> isCardPresent = Optional.of(this.cardRepo.findById(id).orElseThrow(cardNotFoundException::new));
 		TdCard cardPresent = isCardPresent.get();
@@ -40,7 +53,7 @@ public class TdCardService {
 		cardPresent.setContent(card.getContent());
 		cardPresent.setCreatedOn(card.getCreatedOn());
 		cardPresent.setSelected(card.getSelected());
-		return this.cardRepo.save(cardPresent);
+		return this.mapCardDto(this.cardRepo.save(cardPresent));
 	}
 	
 //	Delete User

@@ -4,8 +4,7 @@ import java.util.List;
 //import java.util.Optional;
 import java.util.Optional;
 
-import org.springframework.data.util.Optionals;
-//import org.springframework.http.ResponseEntity;
+//import org.springframework.data.util.Optionals;
 import org.springframework.stereotype.Service;
 
 import com.jr.tdl.main.exception.UserNotFoundException;
@@ -26,8 +25,6 @@ public class UserService {
 //	Create User
 	public User createUser(User user) {
 		return this.userRepo.save(user);
-//		return this.userRepo.saveAndFlush(user);
-//		return this.userRepo.findAll();
 	}
 	
 //	Read User
@@ -45,20 +42,14 @@ public class UserService {
 		userPresent.setSecondName(user.getSecondName());
 		userPresent.setUserName(user.getUserName());
 		userPresent.setPassword(user.getPassword());
-		
 		return this.userRepo.save(userPresent);
-//		Boolean isUserPresent = this.userRepo.existsById(id);
-		
-		
-		
 	}
-//	
+
 //	Delete User
 	public boolean deleteUser(Long id) {
 		this.userRepo.findById(id).orElseThrow(UserNotFoundException::new);
 		this.userRepo.deleteById(id);
-		return this.userRepo.existsById(id);
-		
+		return this.userRepo.existsById(id);	
 	}
 	
 

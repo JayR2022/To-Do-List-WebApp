@@ -11,6 +11,7 @@ public class TdCardDto {
 	private Date createdOn;
 	private String content;
 	private Boolean selected;
+	
 	public Long getId() {
 		return id;
 	}

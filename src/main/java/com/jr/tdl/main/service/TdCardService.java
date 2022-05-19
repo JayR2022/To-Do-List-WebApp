@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.jr.tdl.main.exception.UserNotFoundException;
+import com.jr.tdl.main.exception.cardNotFoundException;
 import com.jr.tdl.main.persistence.entity.TdCard;
 import com.jr.tdl.main.persistence.repository.TdCardRepository;
 
@@ -32,9 +32,9 @@ public class TdCardService {
 	}
 	
 // Update User
-	public TdCard updateUser(Long id, TdCard card) {
+	public TdCard updateCard(Long id, TdCard card) {
 		
-		Optional<TdCard> isCardPresent = Optional.of(this.cardRepo.findById(id).orElseThrow(UserNotFoundException::new));
+		Optional<TdCard> isCardPresent = Optional.of(this.cardRepo.findById(id).orElseThrow(cardNotFoundException::new));
 		TdCard cardPresent = isCardPresent.get();
 		
 		cardPresent.setContent(card.getContent());
@@ -44,8 +44,8 @@ public class TdCardService {
 	}
 	
 //	Delete User
-	public boolean deleteUser(Long id) {
-		this.cardRepo.findById(id).orElseThrow(UserNotFoundException::new);
+	public boolean deleteCard(Long id) {
+		this.cardRepo.findById(id).orElseThrow(cardNotFoundException::new);
 		this.cardRepo.deleteById(id);
 		return this.cardRepo.existsById(id);
 		

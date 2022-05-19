@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
+
 //import org.springframework.data.util.Optionals;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import com.jr.tdl.main.rest.dto.UserDto;
 public class UserService {
 	
 	private UserRepository userRepo;
+	
 	private ModelMapper modelMapper; 
 
 	public UserService(UserRepository userRepo, ModelMapper modelMapper){

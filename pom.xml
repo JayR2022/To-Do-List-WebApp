@@ -71,6 +71,12 @@
 		    <artifactId>springdoc-openapi-ui</artifactId>
 		    <version>1.6.8</version>
 		</dependency>
+
+		 <dependency>
+        	<groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.8.0.2131</version>
+    	</dependency>
 	</dependencies>
 
 	<build>
@@ -87,7 +93,42 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						</execution>
+						<!-- attached to Maven test phase -->
+						<execution>
+							<id>report</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+					</executions>
+        	</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>http://localhost:9000</sonar.host.url>
+                <sonar.user>d6ba2c099908ea8d693e2116bf5b07f3b1dd77f6</sonar.user>
+                <!-- <sonar.password>admin1</sonar.password> -->
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

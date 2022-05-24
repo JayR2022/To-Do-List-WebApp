@@ -1,15 +1,38 @@
 // click button to create a new container
-function printHello(){
-    return "Hello World";
+function createCard(){
+
+    let div = document.querySelector('.start-div');
+    let divCard = document.createElement('div');
+    divCard.className = 'card';
+    divCard.style ="width: 18rem;";
+    let divCardBody = document.createElement('div');
+    divCardBody.className = 'card-body';
+    let pCardText = document.createElement('p');
+    pCardText.textContent = 'Hello';
+    pCardText.className = 'card-text';
+    let lineBreak = document.createElement("br");
+    
+    div.appendChild(divCard);
+    divCard.appendChild(divCardBody);
+    divCardBody.appendChild(pCardText)
+    div.appendChild(lineBreak);
 }
 
-let btn = document.querySelector('#mybutton');
-btn.innerText = "Hello World";
 
-let para = document.querySelectorAll('button');
-for(let p of para) {
-    p.style.color = 'blue';
-}
+
+let btn = document.querySelector('#create_button');
+btn.addEventListener('click',createCard);
+
+
+
+
+
+// btn.innerText = "Hello World";
+
+// let para = document.querySelectorAll('button');
+// for(let p of para) {
+//     p.style.color = 'blue';
+// }
 
 // console.log("Hello");
 

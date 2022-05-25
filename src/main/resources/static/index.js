@@ -63,4 +63,5 @@ function createCard(){
 let btn = document.querySelector('#create_button');
 btn.addEventListener('click',createCard);
 
+// Integrating the card with the backend api.
 

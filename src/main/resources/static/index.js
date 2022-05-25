@@ -20,3 +20,4 @@ for(let p of para) {
 // document.getElementById("myBtn").addEventListener("click", displayDate);
 
 // making a post request
+

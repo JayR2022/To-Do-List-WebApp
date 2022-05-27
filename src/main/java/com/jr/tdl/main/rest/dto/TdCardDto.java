@@ -2,6 +2,8 @@ package com.jr.tdl.main.rest.dto;
 
 import java.util.Date;
 
+import com.jr.tdl.main.persistence.entity.User;
+
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -11,6 +13,7 @@ public class TdCardDto {
 	private Date createdOn;
 	private String content;
 	private Boolean selected;
+	private User customer;
 	
 	public Long getId() {
 		return id;
@@ -36,7 +39,12 @@ public class TdCardDto {
 	public void setSelected(Boolean selected) {
 		this.selected = selected;
 	}
-	
+	public User getCustomer() {
+		return customer;
+	}
+	public void setCustomer(User customer) {
+		this.customer = customer;
+	}
 	
 
 }

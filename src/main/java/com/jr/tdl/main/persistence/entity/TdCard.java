@@ -6,9 +6,11 @@ import javax.persistence.Column;
 
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,7 +25,8 @@ public class TdCard {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(targetEntity =User.class)
+	@ManyToOne(targetEntity=User.class)
+	@JoinColumn(name="customerId", referencedColumnName="id")
     private User customer;
 	
 	@Column(name="created_On",nullable = false)

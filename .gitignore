@@ -29,10 +29,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-<<<<<<< HEAD
 ### VS Code ###
 .vscode/
-=======
 # Package Files #
 *.jar
 *.war
@@ -54,4 +52,6 @@ hs_err_pid*
 mvnw
 mvnw.cmd
 HELP.md
->>>>>>> feature-frontend
+
+# NodeJs
+*node_modules

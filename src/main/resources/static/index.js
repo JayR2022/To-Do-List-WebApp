@@ -2,13 +2,13 @@
 
 
 function createCard() {
-
+      
     let div = document.querySelector('.start-div');
     let divCard = document.createElement('div');
     divCard.className = 'card';
     divCard.style ="width: 18rem;";
     let divCardBody = document.createElement('div');
-    divCardBody.className = 'card-body';
+    divCardBody.clsassName = 'card-body';
 
     const d = new Date();
     // Add Button elements

@@ -1,0 +1,23 @@
+{
+  "name": "to-do-list-webapp",
+  "version": "1.0.0",
+  "description": "A To-Do List Web Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayR2022/To-Do-List-WebApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JayR2022/To-Do-List-WebApp/issues"
+  },
+  "homepage": "https://github.com/JayR2022/To-Do-List-WebApp#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

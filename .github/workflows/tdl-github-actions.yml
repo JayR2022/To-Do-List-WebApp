@@ -1,0 +1,25 @@
+name: tdl-github-actions
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+# A job is a set of steps in a workflow that execute on the same runner
+# Job1 - called build
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the github repo
+    - name: Checkout github repo
+      uses: actions/checkout@v3
+    - name: setting up jdk
+      uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+    - name: building mvn project
+      run: mvn --batch-mode --update-snapshots package
+      shell: bash
+
+      

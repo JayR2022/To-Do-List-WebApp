@@ -12,6 +12,11 @@ mvn clean
 mvn compiles
 mvn spring-boot:run
 ```
+### **Building Docker Image using Maven**
+
+```
+docker build -t springio/gs-spring-boot-docker .
+```
 
 
 
